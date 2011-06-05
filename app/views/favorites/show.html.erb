@@ -1,0 +1,191 @@
+<%= link_to 'Back', favorites_path %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="profile_pic"><img src="<%= @favorite.profile_image_url %>" /></div>
+<h3><%= @favorite.screen_name %>: <%= @favorite.text %></h3>
+<p><a href="http://twitter.com/#!/<%= @favorite.screen_name %>/status/<%= @favorite.id_str %>">original tweet link</a> - <a href="http://twitter.com/<%= @favorite.screen_name %>">user profile</a></p>
+
+
+
+<% if @favorite.latitude.blank? %>
+<% else %>
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q=<%= @favorite.latitude %>+<%= @favorite.longitude %>&amp;output=embed"></iframe>
+<% end %>
+
+<%= form_for(@favorite) do |f| %>
+  <% if @favorite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@favorite.errors.count, "error") %> prohibited this favorite from being saved:</h2>
+
+      <ul>
+      <% @favorite.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="notes">
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes, :cols => 60, :rows => 5 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<h2>Tweet Info</h2>
+<p>
+  <b>Tweet Created at:</b>
+  <%= @favorite.created_at %>
+</p>
+
+<p>
+  <b>Tweet Id:</b>
+  <%= @favorite.id_str %>
+</p>
+
+<p>
+  <b>In reply to status:</b>
+  <%= @favorite.in_reply_to_status_id %>
+</p>
+
+<p>
+  <b>In reply to user:</b>
+  <%= @favorite.in_reply_to_user_id %>
+</p>
+
+<p>
+  <b>Retweet count:</b>
+  <%= @favorite.retweet_count %>
+</p>
+
+<p>
+  <b>Favorited:</b>
+  <%= @favorite.favorited %>
+</p>
+
+<p>
+  <b>Place:</b>
+  <a href="http://maps.google.com/maps?q=<%= @favorite.place_full_name %>"><%= @favorite.place_full_name %></a>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @favorite.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @favorite.longitude %>
+</p>
+
+<p>
+  <b>Retweeted:</b>
+  <%= @favorite.retweeted %>
+</p>
+
+<p>
+  <b>In reply to status id str:</b>
+  <%= @favorite.in_reply_to_status_id_str %>
+</p>
+
+<p>
+  <b>In reply to screen name:</b>
+  <%= @favorite.in_reply_to_screen_name %>
+</p>
+
+<p>
+  <b>In reply to user id str:</b>
+  <%= @favorite.in_reply_to_user_id_str %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @favorite.source %>
+</p>
+
+<h2>User Info</h2>
+
+<p>
+  <b>Name:</b>
+  <%= @favorite.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @favorite.description %>
+</p>
+
+
+<p>
+  <b>Location:</b>
+  <a href="http://maps.google.com/maps?q=<%= @favorite.location %>"><%= @favorite.location %></a>
+</p>
+
+
+<p>
+  <b>Homepage url:</b>
+  <%= link_to @favorite.homepage_url, @favorite.homepage_url %>
+</p>
+
+<p>
+  <b>User Account Created at:</b>
+  <%= @favorite.user_created_at %>
+</p>
+
+<p>
+  <b>Followers count:</b>
+  <%= @favorite.followers_count %>
+</p>
+
+<p>
+  <b>Listed count:</b>
+  <%= @favorite.listed_count %>
+</p>
+
+<p>
+  <b>Time zone:</b>
+  <%= @favorite.time_zone %>
+</p>
+
+<p>
+  <b>User id str:</b>
+  <%= @favorite.user_id_str %>
+</p>
+
+<p>
+  <b>Verified:</b>
+  <%= @favorite.verified %>
+</p>
+
+<p>
+  <b>Friends count:</b>
+  <%= @favorite.friends_count %>
+</p>
+
+<p>
+  <b>Statuses count:</b>
+  <%= @favorite.statuses_count %>
+</p>
+
+<p>
+  <b>Favourites count:</b>
+  <%= @favorite.favourites_count %>
+</p>
+
+<p>
+  <b>Utc offset:</b>
+  <%= @favorite.utc_offset %>
+</p>
+
+<p>
+  <b>Lang:</b>
+  <%= @favorite.lang %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @favorite.country %>
+</p>
