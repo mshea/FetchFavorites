@@ -4,11 +4,15 @@
 <a href="<%= feed.id %>.csv"><%= feed.id %>.csv</a>
 <% end %>
 </p>
-<hr> 
+<hr>
 <% @favorites.each do |favorite| %>
 <p><strong>Tweet: </strong><%= favorite.text %></p>
 <p><strong>Name: </strong><%= favorite.name %> (<%= favorite.screen_name %>)</p>
 <p><strong>Tweet Date: </strong><%= favorite.twitter_created_at %></p>
+<% if favorite.latitude.blank? %>
+<% else %>
+<p><a href="http://maps.google.com/maps?q=<%= favorite.latitude %>+<%= favorite.longitude %>">Location on Google Map</a></p>
+<% end %>
 <p><strong>Source URL: </strong><%= favorite.source_url %></p>
 <p><%= link_to 'Show / Add Note', favorite %> - <%= link_to 'Destroy', favorite, :confirm => 'Are you sure?', :method => :delete %></p>
 <hr>
