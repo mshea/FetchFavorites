@@ -1,0 +1,22 @@
+<h1>Fetched Favorites</h1>
+<p><%= link_to 'Fetch Favorites', fetch_path %> - <%= link_to 'Followed Feeds', feeds_path %></p>
+<p><strong>Download CSV files: </strong><% @feeds.each do |feed| %>
+<a href="<%= feed.id %>.csv"><%= feed.id %>.csv</a>
+<% end %>
+</p>
+<% @feeds.each do |sourcefeed| %>
+<h2 class="sourcefeed_title"><%= sourcefeed.url %></h2>
+<% @favorites.each do |favorite| %>
+<% if favorite.source_url == sourcefeed.url %>
+<p><strong>Tweet: </strong><%= favorite.text %></p>
+<p><strong>Name: </strong><%= favorite.name %> (<%= favorite.screen_name %>)</p>
+<p><strong>Tweet Date: </strong><%= favorite.twitter_created_at %></p>
+<% if favorite.latitude.blank? %>
+<% else %>
+<p><a href="http://maps.google.com/maps?q=<%= favorite.latitude %>+<%= favorite.longitude %>">Location on Google Map</a></p>
+<% end %>
+<p class = "link_banner"><%= link_to 'Show / Add Note', favorite %> - <%= link_to 'Destroy', favorite, :confirm => 'Are you sure?', :method => :delete %></p>
+<% end %>
+<% end %>
+<% end %>
+
