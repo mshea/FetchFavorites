@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 // Andy Langton's show/hide/mini-accordion - updated 23/11/2009
 // Latest version @ http://andylangton.co.uk/jquery-show-hide
@@ -38,16 +39,33 @@ return false;
 });
 </script>
 
+=======
+>>>>>>> 2d8cb9bca285c6a6f742c168bbbd0545254df015
 <h1>Fetched Favorites</h1>
 <p><%= link_to 'Fetch Favorites', fetch_path %> - <%= link_to 'Followed Feeds', feeds_path %></p>
 <p><strong>Download CSV files: </strong><% @feeds.each do |feed| %>
 <a href="<%= feed.id %>.csv"><%= feed.id %>.csv</a>
 <% end %>
 </p>
+<<<<<<< HEAD
 <% @feeds.each do |@sourcefeed| %>
 <h2 class="sourcefeed_title"><%= @sourcefeed.url %></h2>
 <div class="favorites">
 <%= render 'favorites'%>
 </div>
+=======
+<hr>
+<% @favorites.each do |favorite| %>
+<p><strong>Tweet: </strong><%= favorite.text %></p>
+<p><strong>Name: </strong><%= favorite.name %> (<%= favorite.screen_name %>)</p>
+<p><strong>Tweet Date: </strong><%= favorite.twitter_created_at %></p>
+<% if favorite.latitude.blank? %>
+<% else %>
+<p><a href="http://maps.google.com/maps?q=<%= favorite.latitude %>+<%= favorite.longitude %>">Location on Google Map</a></p>
+<% end %>
+<p><strong>Source URL: </strong><%= favorite.source_url %></p>
+<p><%= link_to 'Show / Add Note', favorite %> - <%= link_to 'Destroy', favorite, :confirm => 'Are you sure?', :method => :delete %></p>
+<hr>
+>>>>>>> 2d8cb9bca285c6a6f742c168bbbd0545254df015
 <% end %>
 

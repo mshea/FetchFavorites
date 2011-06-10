@@ -6,6 +6,10 @@ gem 'rails', '3.0.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+<<<<<<< HEAD
+=======
+# gem 'twitter'
+>>>>>>> 2d8cb9bca285c6a6f742c168bbbd0545254df015
 
 # Use unicorn as the web server
 # gem 'unicorn'
