@@ -1,0 +1,13 @@
+<% @favorites.each do |favorite| %>
+<% if favorite.source_url == @sourcefeed.url %>
+<p><strong>Tweet: </strong><%= favorite.text %></p>
+<p><strong>Name: </strong><%= favorite.name %> (<%= favorite.screen_name %>)</p>
+<p><strong>Tweet Date: </strong><%= favorite.twitter_created_at %></p>
+<% if favorite.latitude.blank? %>
+<% else %>
+</div>
+<p><a href="http://maps.google.com/maps?q=<%= favorite.latitude %>+<%= favorite.longitude %>">Location on Google Map</a></p>
+<% end %>
+<p class = "link_banner"><%= link_to 'Show / Add Note', favorite %> - <%= link_to 'Destroy', favorite, :confirm => 'Are you sure?', :method => :delete %></p>
+<% end %>
+<% end %>
