@@ -1,45 +1,3 @@
-<script>
-// Andy Langton's show/hide/mini-accordion - updated 23/11/2009
-// Latest version @ http://andylangton.co.uk/jquery-show-hide
-
-// this tells jquery to run the function below once the DOM is ready
-$(document).ready(function() {
-
-// choose text for the show/hide link - can contain HTML (e.g. an image)
-var showText='expand';
-var hideText='hide';
-
-// initialise the visibility check
-var is_visible = false;
-
-// append show/hide links to the element directly preceding the element with a class of "toggle"
-$('.favorites').prev().append(' (<a href="#" class="toggleLink">'+showText+'</a>)');
-
-// hide all of the elements with a class of 'toggle'
-$('.favorites').hide();
-
-// capture clicks on the toggle links
-$('a.toggleLink').click(function() {
-
-// switch visibility
-is_visible = !is_visible;
-
-// change the link depending on whether the element is shown or hidden
-$(this).html( (!is_visible) ? showText : hideText);
-
-@
-
-// toggle the display - uncomment the next line for a basic "accordion" style
-//$('.toggle').hide();$('a.toggleLink').html(showText);
-$(this).parent().next('.favorites').toggle('fast');
-
-// return false so any link destination is not followed
-return false;
-
-});
-});
-</script>
-
 <h1>Fetched Favorites</h1>
 <p><%= link_to 'Fetch Favorites', fetch_path %> - <%= link_to 'Followed Feeds', feeds_path %></p>
 <p><strong>Download CSV files: </strong><% @feeds.each do |feed| %>
@@ -47,10 +5,15 @@ return false;
 <% end %>
 </p>
 <% @feeds.each do |@sourcefeed| %>
-
-<h2 class="sourcefeed_title" id="<%= @sourcefeed.id %>"><%= @sourcefeed.url %></h2>
-<div class="favorites" id="<%= @sourcefeed.id %>">
-<%= render 'favorites'%>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("h2#title_<%= @sourcefeed.id %>").click(function(){
+    $("div#favorites_<%= @sourcefeed.id %>").load('http://128.29.90.31:3000/feedfavorites/<%= @sourcefeed.id %>');
+  });
+});
+</script>
+<h2 class="sourcefeed_title" id="title_<%= @sourcefeed.id %>"><%= @sourcefeed.url %></h2>
+<div class="favorites" id="favorites_<%= @sourcefeed.id %>">
 </div>
 <% end %>
 
