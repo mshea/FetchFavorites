@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110604152957) do
+ActiveRecord::Schema.define(:version => 20110616204418) do
 
   create_table "favorites", :force => true do |t|
     t.string   "source_url"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20110604152957) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "feed_id"
   end
 
   create_table "feeds", :force => true do |t|

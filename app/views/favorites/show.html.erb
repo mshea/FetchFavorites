@@ -1,5 +1,7 @@
 <%= link_to 'Back', favorites_path %>
 
+
+
 <p id="notice"><%= notice %></p>
 
 <div class="profile_pic"><img src="<%= @favorite.profile_image_url %>" /></div>
@@ -34,6 +36,12 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<h2>Feed ID</h2>
+<p>
+  <b>Feed id:</b>
+  <%= @favorite.feed_id %>
+</p>
 
 <h2>Tweet Info</h2>
 <p>

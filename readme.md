@@ -10,14 +10,16 @@ This program reaches out to Twitter and pulls back .json data for a set of speci
 
 ## To Do ##
 
+* Tie URL table to favorites table.
+* Set up a view that returns an HTML clip of all favorites from one source through a source ID.
 * Output dates in a format Excel can deal with
 * Link URLs in the tweet
-* Set up a cronjob to do the fetching regularly
 * Build some tests.
 * Export the whole thing to a server somewhere.
 
 ## Done ##
 
+* Set up a cronjob to do the fetching regularly
 * Build favorites URL section so we can track multiple favorites.
 * Build the CSV export
 * Turn date strings into proper datetime objects.
