@@ -27,8 +27,6 @@ is_visible = !is_visible;
 // change the link depending on whether the element is shown or hidden
 $(this).html( (!is_visible) ? showText : hideText);
 
-@
-
 // toggle the display - uncomment the next line for a basic "accordion" style
 //$('.toggle').hide();$('a.toggleLink').html(showText);
 $(this).parent().next('.favorites').toggle('fast');
@@ -47,9 +45,8 @@ return false;
 <% end %>
 </p>
 <% @feeds.each do |@sourcefeed| %>
-
-<h2 class="sourcefeed_title" id="<%= @sourcefeed.id %>"><%= @sourcefeed.url %></h2>
-<div class="favorites" id="<%= @sourcefeed.id %>">
+<h2 class="sourcefeed_title"><%= @sourcefeed.url %></h2>
+<div class="favorites">
 <%= render 'favorites'%>
 </div>
 <% end %>

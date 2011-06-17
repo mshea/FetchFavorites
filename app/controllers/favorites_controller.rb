@@ -11,6 +11,14 @@ class FavoritesController < ApplicationController
     end
   end
 
+  def feedfavorites
+    @favorites = Favorite.all
+    render :partial => "feedfavorites"
+    #respond_to do |format|
+      #format.html # favorites.html.erb
+    #end
+  end
+
   def fetch
     @feeds = Feed.all
     @feeds.each do |feed|

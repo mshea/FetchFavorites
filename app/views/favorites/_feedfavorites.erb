@@ -1,5 +1,5 @@
 <% @favorites.each do |favorite| %>
-<% if favorite.source_url == @sourcefeed.url %>
+<% if favorite.feed_id.to_s() == params[:feed_id] %>
 <p><strong>Tweet: </strong><%= favorite.text %></p>
 <p><strong>Name: </strong><%= favorite.name %> (<%= favorite.screen_name %>)</p>
 <p><strong>Tweet Date: </strong><%= favorite.twitter_created_at %></p>
