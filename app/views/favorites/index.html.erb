@@ -8,7 +8,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
   $("h2#title_<%= @sourcefeed.id %>").click(function(){
-    $("div#favorites_<%= @sourcefeed.id %>").load('http://128.29.90.31:3000/feedfavorites/<%= @sourcefeed.id %>');
+    $("div#favorites_<%= @sourcefeed.id %>").load('/feedfavorites/<%= @sourcefeed.id %>');
   });
 });
 </script>
