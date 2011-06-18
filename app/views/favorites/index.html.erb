@@ -6,7 +6,7 @@ $(document).ready(function(){
 		$(this).slideDown("slow") });
   	$("h2#title_<%= @sourcefeed.id %>").unbind()
   	$("h2#title_<%= @sourcefeed.id %>").click(function(){
-    	$("div#favorites_<%= @sourcefeed.id %>").slideToggle()
+    	$("div#favorites_<%= @sourcefeed.id %>").slideToggle("slow")
 	});
   });
 <% end %>
@@ -22,7 +22,9 @@ $(document).ready(function(){
 </p>
 <% @feeds.each do |@sourcefeed| %>
 <h2 class="sourcefeed_title" id="title_<%= @sourcefeed.id %>"><%= @sourcefeed.url %></h2>
+<div class="wrapper">
 <div class="favorites" id="favorites_<%= @sourcefeed.id %>">
+</div>
 </div>
 <% end %>
 
