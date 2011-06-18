@@ -39,7 +39,6 @@ h1, h2 {
 
 .profile_pic {
 	float: right;
-<<<<<<< HEAD
 }
 
 h2.sourcefeed_title {
@@ -52,6 +51,3 @@ h2.sourcefeed_title {
 p.link_banner {
 	padding-bottom: 10px;
 	border-bottom: 1px #ccc  solid;
-=======
->>>>>>> 2d8cb9bca285c6a6f742c168bbbd0545254df015
-}
