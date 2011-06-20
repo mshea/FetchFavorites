@@ -22,8 +22,8 @@ class FavoritesController < ApplicationController
   def fetch
     @feeds = Feed.all
     @feeds.each do |feed|
-      #jsondata = open(feed.url, :proxy => "http://gatekeeper-w.mitre.org:80").read
-      jsondata = open(feed.url).read
+      jsondata = open(feed.url, :proxy => "http://gatekeeper-w.mitre.org:80").read
+      #jsondata = open(feed.url).read
       data = ActiveSupport::JSON.decode(jsondata)
       csv = []
       CSV.open("./public/#{feed.id}.csv", "w") do |csv|
