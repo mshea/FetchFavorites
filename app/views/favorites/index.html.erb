@@ -1,3 +1,19 @@
+<script type="text/javascript">
+$(document).ready(function(){
+<% @feeds.each do |@sourcefeed| %>
+  $("h2#title_<%= @sourcefeed.id %>").click(function(){
+    $("div#favorites_<%= @sourcefeed.id %>").hide().load('<%= url_for (:action=> 'feedfavorites', :feed_id => @sourcefeed.id) %>', function() {
+		$(this).slideDown("slow") });
+  	$("h2#title_<%= @sourcefeed.id %>").unbind()
+  	$("h2#title_<%= @sourcefeed.id %>").click(function(){
+    	$("div#favorites_<%= @sourcefeed.id %>").slideToggle("slow")
+	});
+  });
+<% end %>
+});
+</script>
+
+
 <h1>Fetched Favorites</h1>
 <p><%= link_to 'Fetch Favorites', fetch_path %> - <%= link_to 'Followed Feeds', feeds_path %></p>
 <p><strong>Download CSV files: </strong><% @feeds.each do |feed| %>
@@ -5,15 +21,10 @@
 <% end %>
 </p>
 <% @feeds.each do |@sourcefeed| %>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("h2#title_<%= @sourcefeed.id %>").click(function(){
-    $("div#favorites_<%= @sourcefeed.id %>").load('http://128.29.90.31:3000/feedfavorites/<%= @sourcefeed.id %>');
-  });
-});
-</script>
 <h2 class="sourcefeed_title" id="title_<%= @sourcefeed.id %>"><%= @sourcefeed.url %></h2>
+<div class="wrapper">
 <div class="favorites" id="favorites_<%= @sourcefeed.id %>">
+</div>
 </div>
 <% end %>
 
